@@ -1,4 +1,3 @@
-import '../styles/globals.css';
 import { StateProvider } from '../src/State/StateProvider';
 import { ChakraProvider } from '@chakra-ui/react';
 import reducer from '../src/State/reducer';

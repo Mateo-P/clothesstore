@@ -1,5 +1,5 @@
 import initialStates from './initialStates';
-import { areItemsEqual } from 'shared/itemFunctions';
+import { areItemsEqual } from '../shared/itemFunctions';
 
 function reducer(state, action) {
     switch (action.type) {
