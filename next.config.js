@@ -6,6 +6,6 @@ module.exports = {
         storageDir: 'tmp'
     },
     images: {
-        domains: ['http2.mlstatic.com', 'localhost']
+        domains: ['http2.mlstatic.com', 'mco-s1-p.mlstatic.com', 'localhost']
     }
 };

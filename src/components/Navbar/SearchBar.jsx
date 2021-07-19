@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Flex, InputGroup, Box, Input, InputRightAddon } from '@chakra-ui/react';
+import { Flex, InputGroup, Box, Input, InputRightAddon, useMediaQuery } from '@chakra-ui/react';
 import Image from 'next/image';
 import { SearchResults } from './SearchResults';
 import useCategories from '../../Hooks/useCategories';
@@ -10,6 +10,8 @@ export const SearchBar = () => {
     const router = useRouter();
     const [filteredCategories, setfilteredCategories] = useState([]);
     const [selectedCategory, setselectedCategory] = useState('');
+    const [isLargerThan720] = useMediaQuery('(min-width: 720px)');
+    const width = isLargerThan720 ? '700px' : '345px';
 
     const handleFilterCategories = (e) => {
         const searchWord = e.target.value;
@@ -28,13 +30,13 @@ export const SearchBar = () => {
     const selectCategory = (id, name) => () => {
         setselectedCategory({ id, name });
         setfilteredCategories([]);
-        console.log(router.pathname);
+
         router.push(`/${id}`);
     };
 
     return (
         <Flex position="relative" alignItems="center">
-            <Flex width="700px" justifyContent="center" alignItems="center">
+            <Flex width={width} justifyContent="center" alignItems="center">
                 <InputGroup>
                     <Input
                         value={selectedCategory.name}

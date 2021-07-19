@@ -3,24 +3,22 @@ import { Layout } from '../src/components/Layouts/Layout';
 import { Landing } from '../src/components/Landing/Landing';
 import { ProductList } from '../src/components/Product/ProductList';
 import useProducts from '../src/Hooks/useProducts';
+import useCategories from '../src/Hooks/useCategories';
 
 export default function Home() {
-    const { products } = useProducts({ site_id: 'MCO', category: 'MCO1430' });
-    const [paging, setpaging] = useState(0);
-    const [currentProducts, setcurrentProducts] = useState(products.slice(2, 5));
-    useEffect(() => {
-        let newProducts = products.slice(paging, paging + 1);
-        setcurrentProducts(newProducts);
-    }, [paging]);
-    const handlePaging = (direction) => {
-        direction < 0 ? setpaging(-4) : setpaging(4);
-    };
-    console.log(products);
-    console.log(currentProducts);
+    const { categories } = useCategories();
+    const random = Math.floor(Math.random() * categories.length);
+    const randomCategory = categories[random];
+    const category = randomCategory && randomCategory.id;
+
+    const { products } = useProducts({
+        site_id: 'MCO',
+        category
+    });
     return (
         <Layout>
             <Landing />
-            <ProductList products={currentProducts} handlePaging={handlePaging} />
+            <ProductList products={products} />
         </Layout>
     );
 }

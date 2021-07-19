@@ -1,5 +1,6 @@
 export const initialStates = {
-    basket: []
+    basket: [],
+    open: false
 };
 
 export default initialStates;

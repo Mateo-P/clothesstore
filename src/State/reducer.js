@@ -3,10 +3,15 @@ import { areItemsEqual } from '../shared/itemFunctions';
 
 function reducer(state, action) {
     switch (action.type) {
+        case 'OPEN_BASKET':
+            return {
+                ...state,
+                open: !state.open
+            };
         case 'ADD_TO_BASKET':
             return {
                 ...state,
-                basket: [...state.basket, action.item],
+                basket: [...state.basket, action.product],
                 selectedOptions: []
             };
 
@@ -14,7 +19,7 @@ function reducer(state, action) {
             let newBasket = [...state.basket];
 
             let itemIndex = state.basket.findIndex((basketItem) =>
-                areItemsEqual(basketItem, action.item)
+                areItemsEqual(basketItem, action.product)
             );
 
             if (itemIndex >= 0) {

@@ -1,10 +1,15 @@
-import { Button, Flex, Text, Box } from '@chakra-ui/react';
+import { useMediaQuery, Flex, Text, Box } from '@chakra-ui/react';
 import Image from 'next/image';
 
 export const Media = () => {
     const media = ['facebook', 'twitter', 'instagram', 'youtube'];
+
+    const [isLargerThan720] = useMediaQuery('(min-width: 720px)');
+    const width = isLargerThan720 ? '32' : '20';
+    const height = isLargerThan720 ? '32' : '20';
+    const mt = isLargerThan720 ? '0' : '4';
     return (
-        <Box>
+        <Box mt={mt}>
             <Text textColor="white" mb="8" size="32" fontWeight="bold">
                 SÍGUENOS EN:
             </Text>
@@ -20,7 +25,7 @@ export const Media = () => {
                             as="button"
                             marginRight="4"
                             backgroundColor="white">
-                            <Image src={`/${md}.svg`} width="32" height="32" />
+                            <Image src={`/${md}.svg`} width={width} height={height} />
                         </Flex>
                     );
                 })}

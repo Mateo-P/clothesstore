@@ -1,4 +1,3 @@
-//https://api.mercadolibre.com/sites/MCO/categories
 import { useState, useEffect } from 'react';
 import useApi from './useApi';
 
