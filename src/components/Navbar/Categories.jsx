@@ -7,7 +7,7 @@ export const Categories = () => {
                 if (i < categories.length - 1) {
                     return (
                         <Flex key={i}>
-                            <Button key pl="6" pr="6" variant="link">
+                            <Button pl="6" pr="6" variant="link">
                                 <Text fontSize="18" fontWeight="bold" color="#ffff">
                                     {category}
                                 </Text>
@@ -15,16 +15,17 @@ export const Categories = () => {
                             <Divider orientation="vertical" />
                         </Flex>
                     );
+                } else {
+                    return (
+                        <div key={i}>
+                            <Button pl="6" pr="6" variant="link">
+                                <Text fontSize="18" fontWeight="bold" color="#ffff">
+                                    {category}
+                                </Text>
+                            </Button>
+                        </div>
+                    );
                 }
-                return (
-                    <>
-                        <Button pl="6" pr="6" variant="link">
-                            <Text fontSize="18" fontWeight="bold" color="#ffff">
-                                {category}
-                            </Text>
-                        </Button>
-                    </>
-                );
             })}
         </Flex>
     );
